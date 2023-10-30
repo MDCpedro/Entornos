@@ -21,6 +21,7 @@ public class Act_8 {
             int Altura = scanner.nextInt();
             int AreaTriangulo = Base*Altura/2;
             System.out.println("El area del triangulo es: " +AreaTriangulo+ " cm2");
+            scanner.close();
         } 
 
     }
