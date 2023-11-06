@@ -1,6 +1,6 @@
 package act_3;
 
-public class Act_ContarEspacios {
+public class Act_ContarVocales {
     public static void main(String[] args) {
 
         String frase = "Hola Mundo A";
