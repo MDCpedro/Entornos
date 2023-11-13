@@ -1,4 +1,4 @@
-package act_3;
+package ActividadesJava;
 import java.util.Scanner;
 public class Act_4 {
     public static void main(String[] args) {

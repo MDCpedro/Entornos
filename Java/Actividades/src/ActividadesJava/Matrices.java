@@ -1,4 +1,4 @@
-package act_3;
+package ActividadesJava;
 
 public class Matrices {
     public static void main(String[] args) {

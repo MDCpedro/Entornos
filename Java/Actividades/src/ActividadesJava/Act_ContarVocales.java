@@ -1,4 +1,4 @@
-package act_3;
+package ActividadesJava;
 
 public class Act_ContarVocales {
     public static void main(String[] args) {
