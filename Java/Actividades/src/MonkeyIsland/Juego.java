@@ -1,8 +1,8 @@
 package MonkeyIsland;
 
 import java.util.Scanner;
-import static MonkeyIsland.Metodos.NumAleatorio;
-import static MonkeyIsland.Metodos.RondaJugador;
+
+import static MonkeyIsland.Metodos.*;
 
 public class Juego {
     public static void main(String[] args) {
@@ -30,11 +30,12 @@ public class Juego {
         System.out.println("-----------si eliges la equivocada perderás el duelo.------------");
         System.out.println("-----------------------------------------------------------------");
 
-        int NumInicio = NumAleatorio(0, 4);
 
-        while (WinJugador != 3 || WinEnemigo != 3) {
-            RondaJugador();
-
+        while (WinJugador != 4 && WinEnemigo != 4) {
+            int[] resultados = RondaJugador(WinJugador, WinEnemigo);
+            WinJugador = resultados[0];
+            WinEnemigo = resultados[1];
+            int[] resultados = RondaEnemigo(WinJugador, WinEnemigo);
         }
 
 
