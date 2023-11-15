@@ -1,8 +1,9 @@
 package MonkeyIsland;
 
 import java.util.Scanner;
-
 import static MonkeyIsland.Metodos.*;
+
+// Importacion de metodos.
 
 public class Juego {
     public static void main(String[] args) {
@@ -24,20 +25,25 @@ public class Juego {
         int WinJugador = 0;
         int WinEnemigo = 0;
 
+        // Variables.
+
         System.out.println("----------------Bienvendio a Monkey Island-----------------------");
         System.out.println("-----------Aquí tendrás que ingeniarte las respuestas------------");
         System.out.println("-----------correctas para los insultos de tus enemigos,----------");
         System.out.println("-----------si eliges la equivocada perderás el duelo.------------");
         System.out.println("-----------------------------------------------------------------");
 
+        // Texto de titulo.
 
-        while (WinJugador != 4 && WinEnemigo != 4) {
+        while (WinJugador < 4 && WinEnemigo < 4) {
             int[] resultados = RondaJugador(WinJugador, WinEnemigo);
             WinJugador = resultados[0];
             WinEnemigo = resultados[1];
-            int[] resultados = RondaEnemigo(WinJugador, WinEnemigo);
+            resultados = RondaEnemigo(WinJugador, WinEnemigo);
+            WinJugador = resultados[0];
+            WinEnemigo = resultados[1];
         }
-
+        // Bucle donde se llaman a los metodos, donde se ejecutan las rondas, además de actualizar los valores del marcador.
 
     }
 }

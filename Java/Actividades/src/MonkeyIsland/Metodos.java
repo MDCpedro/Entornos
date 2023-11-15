@@ -8,6 +8,7 @@ public class Metodos {
         return random.nextInt(maximo - minimo);
     }
 
+// Metodo que genera numeros aleatorios.
 
     public static int[] RondaJugador(int WinJugador, int WinEnemigo) {
         String[] insultos = {
@@ -52,6 +53,8 @@ public class Metodos {
         return resultados;
     }
 
+    // Metodo donde el enemigo te insulta, y tu respondes.
+
     public static int[] RondaEnemigo(int WinJugador, int WinEnemigo) {
         String[] insultos = {
                 "¿Has dejado ya de usar pañales?",
@@ -94,5 +97,6 @@ public class Metodos {
         }
         return resultados;
     }
+    // Metodo donde tu insultas y el enemigo responde.
 }
 
