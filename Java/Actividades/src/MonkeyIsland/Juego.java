@@ -35,7 +35,12 @@ public class Juego {
 
         // Texto de titulo.
 
-        while (WinJugador < 4 && WinEnemigo < 4) {
+        int MonedaInicio = NumAleatorio(0, 2);
+
+        // Metodo num aleatorio usado para determinar si empieza el enemigo o el jugador.
+
+        if (MonedaInicio == 0) {
+            while (WinJugador < 3 && WinEnemigo < 3) {
             int[] resultados = RondaJugador(WinJugador, WinEnemigo);
             WinJugador = resultados[0];
             WinEnemigo = resultados[1];
@@ -43,7 +48,20 @@ public class Juego {
             WinJugador = resultados[0];
             WinEnemigo = resultados[1];
         }
-        // Bucle donde se llaman a los metodos, donde se ejecutan las rondas, además de actualizar los valores del marcador.
+        } else {
+            while (WinJugador < 3 && WinEnemigo < 3) {
+            int [] resultados = RondaEnemigo(WinJugador, WinEnemigo);
+            WinJugador = resultados[0];
+            WinEnemigo = resultados[1];
+            resultados = RondaJugador(WinJugador, WinEnemigo);
+            WinJugador = resultados[0];
+            WinEnemigo = resultados[1];
+        }
+        
+            
+        }
+        // Un if, si sale un 0 o 1 se elige un bucle diferente donde se llaman a los metodos en un orden distinto para asi definir quien empieza,
+        // donde se ejecutan las rondas, además de actualizar los valores del marcador.
 
     }
 }
