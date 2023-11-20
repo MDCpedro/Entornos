@@ -1,5 +1,7 @@
 package coleccioncartasfp;
 
+import java.sql.SQLOutput;
+
 public class Coleccion {
 
     public Superheroe[] superheroes;
@@ -37,5 +39,19 @@ public class Coleccion {
 
             i++;
         }
+    }
+
+    public int ObtenerFuerzaMax() {
+        int Mayorfuerza = 0;
+        int i = 0;
+
+        while (i < superheroes.length){
+            if (Mayorfuerza < superheroes[i].fuerza) {
+                Mayorfuerza = superheroes[i].fuerza;
+            }
+            i++;
+        }
+        System.out.println("La mayor fuerza que hay es de: " +Mayorfuerza);
+        return Mayorfuerza;
     }
 }

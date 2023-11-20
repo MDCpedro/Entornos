@@ -12,7 +12,7 @@ public class ColeccionCartasFP {
         //Per fer:
         //Crida a un metode dins Coleccio, que pinti amb un println()
         //quina es la major força dins la nostra coleccio
-
+        int MayorFuerza = marvel.ObtenerFuerzaMax();
         //Per fer:
         //Crida a un metode dins Coleccio, que pinti amb un println()
         //quin es el superheroe amb major vida i quin valor te vida
