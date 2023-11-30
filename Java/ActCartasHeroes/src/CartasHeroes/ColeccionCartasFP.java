@@ -1,5 +1,7 @@
 package CartasHeroes;
 
-public class SuperHeroes {
-    public static void main
+public class ColeccionCartasFP {
+    public static void main(String[]args) {
+
+    }
 }
