@@ -1,17 +1,15 @@
 import pygame
-
+import nave
 pygame.init()
 pantalla = pygame.display.set_mode((1000,800))
 
 salir = False
-
-imagen_avion = pygame.image.load("Python/SpaceInvaders/avion.png")
-avion = pygame.transform.scale(imagen_avion, (120,120))
-
+clock = pygame.time.Clock()
 posIzq = 30
 posTop = 30
-
+nave = nave.Nave()
 while not salir:
+    clock.tick(200)
     # gestionar eventos
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -19,19 +17,14 @@ while not salir:
     
     teclas = pygame.key.get_pressed()
     if teclas[pygame.K_LEFT]:
-        posIzq -= 1
+        nave.moverIzq()
     if teclas[pygame.K_RIGHT]:
-        posIzq += 1
-    if teclas[pygame.K_UP]:
-        posTop -= 1
-    if teclas[pygame.K_DOWN]:
-        posTop += 1
+        nave.moverDer(pantalla)
+   
 
-    # gestionar cambios
     pantalla.fill((255,255,255))
-    pantalla.blit(avion, (posIzq, posTop))
+    nave.dibujar(pantalla)
 
-    # redibujar el juego
     pygame.display.flip()
 
 pygame.quit()
