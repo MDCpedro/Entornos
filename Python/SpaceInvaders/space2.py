@@ -1,5 +1,6 @@
 import pygame
 import elementosSpace2
+import pygame_menu
 import random
 #iniciamos juego
 pygame.init()
@@ -11,10 +12,19 @@ pantalla = pygame.display.set_mode(tamanyo)
 pantalla.fill((255, 255, 255))
 
 #creamos reloj
-reloj = pygame.time.Clock()
+
 FPS = 60
 running = True
+global ultimo_enemigo_creado
+global reloj 
+global frecuencia_creacion_enemigo
+global FPS
+global grupo_sprites_todos
+global grupo_sprites_enemigos
+global grupo_sprites_balas
 
+
+reloj = pygame.time.Clock()
 # sprites
 
 posicion = (200, 200)
@@ -25,7 +35,17 @@ grupo_sprites.add(elementosSpace2.Nave((300, 500)))
 grupo_sprites.add(elementosSpace2.Fondo)
 
 #bucle principal limitado al frame rate definido
-while running:
+
+
+
+
+def set_difficulty(value, difficulty):
+    # Do the job here !
+    pass
+
+def start_the_game():
+    running = True
+    while running:
     reloj.tick(FPS)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -50,5 +70,15 @@ while running:
         ultimo_enemigo_creado = momento_actual
     #refrescamos pantalla
     pygame.display.flip()
+
+menu = pygame_menu.Menu('Welcome', 400, 300,
+                       theme=pygame_menu.themes.THEME_BLUE)
+
+menu.add.text_input('Name :', default='John Doe')
+menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
+menu.add.button('Play', start_the_game)
+menu.add.button('Quit', pygame_menu.events.EXIT)
+
+menu.mainloop(pantalla)
 
 pygame.quit()
