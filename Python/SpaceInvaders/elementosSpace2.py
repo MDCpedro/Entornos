@@ -1,12 +1,11 @@
 from typing import Any
 import pygame
-from pygame.sprite import _Group
 
 class Nave(pygame.sprite.Sprite):
     def __init__(self, posicion):
         super().__init__()
-        self.imagenes_cargadas = [pygame.image.load("avion.png"),
-                             pygame.image.load("avion2.png")]
+        self.imagenes_cargadas = [pygame.image.load("Python\\SpaceInvaders\\avion.png"),
+                             pygame.image.load("Python\\SpaceInvaders\\avion.png")]
         self.indice = 0
         self.image = self.imagenes_cargadas[self.indice]
         self.contador = 0
@@ -28,7 +27,7 @@ class Nave(pygame.sprite.Sprite):
         self.indice = self.contador // 20
         self.image = self.imagenes_cargadas[self.indice]
 
-    def Disparar(self, grupo_sprites):
+    def disparar(self, grupo_sprites):
         bala = Bala(self.rect.x + self.image.get_width() / 2, self.rect.y)
         grupo_sprites.add(bala)
 
@@ -36,8 +35,8 @@ class Nave(pygame.sprite.Sprite):
 class Enemigo(pygame.sprite.Sprite):
     def __init__(self, posicion):
         super().__init__()
-        self.imagenes_cargadas = [pygame.image.load("avion.png"),
-                             pygame.image.load("avion2.png")]
+        self.imagenes_cargadas = [pygame.image.load("Python\\SpaceInvaders\\avion.png"),
+                             pygame.image.load("Python\\SpaceInvaders\\avion2.png")]
         self.indice = 0
         self.contador = 0
         self.image = pygame.transform.rotate(self.imagenes_cargadas[self.indice], 180)
@@ -57,10 +56,10 @@ class Fondo(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         # cargamos la imagen
-        imagen = pygame.image.load("avion.png")
+        imagen = pygame.image.load("Python\\SpaceInvaders\\avion.png")
         # capturamos la pantalla
         pantalla = pygame.display.get_surface()
-        self.image = pygame.transform.scale(imagen (pantalla.get_width))
+        self.image = pygame.transform.scale(imagen, (pantalla.get_width(), pantalla.get_height()))
         self.rect = self.image.get_rect()
         self.rect.topleft = (0,0)
 
