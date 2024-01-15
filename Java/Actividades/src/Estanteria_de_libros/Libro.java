@@ -6,7 +6,7 @@ public class Libro {
     private String autor;
     private double calificacion;
 
-    public Libro() {
+    public Libro(String titulo, String autor, double calificacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.calificacion = calificacion;
