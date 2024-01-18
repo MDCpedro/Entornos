@@ -4,12 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.List;
 public class Estanteria {
-    private List<Libro> libros;
-
+    private List<Libro> libros = new ArrayList<>();
 
     public Estanteria(){
-       this.libros = new ArrayList<>();
     }
+
 
     public void pintarElecciones() {
         System.out.println("------- Estanteria de libros ---------");
@@ -20,18 +19,15 @@ public class Estanteria {
         System.out.println("-3. Top 10 libros (mostrar libros por calificacion de mayor a menor)");
         System.out.println("-4. Mostrar libros de la estanteria");
         System.out.println("-- Selecciona una opcion pulsando su numero correspondiente. --");
-
+ 
     }
 
-    private void añadirLibro() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("- Escribe el titulo del libro:");
-        String titulo = scanner.nextLine();
-        System.out.println("- Escribe el autor del libro:");
-        String autor = scanner.nextLine();
-        System.out.println("- Escribe la calificacion del libro: ");
-        double calificacion = scanner.nextDouble();
-        Libro libro = new Libro(titulo, autor, calificacion);
+    public void añadirLibro(String titulo, String autor, double nota) {
+        Libro libro = new Libro(titulo, autor, nota);
         this.libros.add(libro);
+    }
+
+    public void eliminarLibro() {
+
     }
 }
