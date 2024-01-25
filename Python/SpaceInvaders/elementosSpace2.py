@@ -15,12 +15,13 @@ class Nave(pygame.sprite.Sprite):
     def update(self, *args: Any, **kwargs: Any):
         teclas = args[0]
         pantalla = pygame.display.get_surface()
+        pantalla = pantalla.get_width()
         if teclas[pygame.K_LEFT]:
             self.rect.x -= 5
             self.rect.x = max(0, self.rect.x)
         if teclas[pygame.K_RIGHT]:
             self.rect.x += 5
-            self.rect.x = min(pantalla.get_width(), self.rect.x)
+            self.rect.x = min(pantalla.get_width()-self.image.get_width(), self.rect.x)
 
         # aqui
         self.contador = (self.contador + 7) % 40
