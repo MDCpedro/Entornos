@@ -1,5 +1,8 @@
 import pygame
+
 from typing import Any
+
+
 
 
 # Creamos la plataforma, o nave.
@@ -7,10 +10,11 @@ from typing import Any
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, posicion):
         super().__init__()
-        imagenes_cargadas = pygame.image.load("RescateEspacial\\imagenes\\Captura.PNG")
+        imagenes_cargadas = pygame.image.load("RescateEspacial\\imagenes\\nave.png")
         self.image = imagenes_cargadas
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion
+        self.image = pygame.transform.scale(imagenes_cargadas, (200, 200))
     
     def update(self, *args: Any, **kwargs: Any):
         teclas = args[0]
@@ -39,3 +43,17 @@ class Fondo(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(imagen, (pantalla.get_width(), pantalla.get_height()))
         self.rect = self.image.get_rect()
         self.rect.topleft = (0,0)
+
+# Creamos meteoritos 
+        
+class Meteorito(pygame.sprite.Sprite):
+    def __init__(self, posicion_spawn):
+        super().__init__()
+        imagenes_cargadas = pygame.image.load("RescateEspacial\\imagenes\\nave.png")
+        posicion_spawn = posicion_spawn
+        self.image = imagenes_cargadas
+        self.rect = self.image.get_rect()
+        self.rect.topleft = posicion_spawn
+    
+    def update(self, *args: Any, **kwargs: Any):
+        self.rect.y += 4
