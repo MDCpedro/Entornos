@@ -19,27 +19,24 @@ public class Main {
         Personaje heroe = new Personaje("Yuuji", 10, mazo);
         Personaje villano = new Personaje("Sukuna", 10, mazo);
 
-        System.out.println("Pelea entre" + heroe.getNombre());
-
         pelea(heroe, villano, mazo);
 
 
 
     }
 
-    public static void pelea(Personaje heroe, Personaje villano, List Mazo) {
+    public static void pelea(Personaje heroe, Personaje villano, List<Carta> Mazo) {
         Random random = new Random();
         boolean HeroeEmpieza = random.nextBoolean();
         int Seleccion = random.nextInt(0, 2);
 
+
         System.out.println("Pelea entre " + heroe.getNombre() + " y " + villano.getNombre() +"!!!");
         System.out.println(heroe.getNombre()+ ", Vida: " +heroe.getVida() +", Mazo: " +heroe.getMazo());
+        System.out.println(villano.getNombre()+ ", Vida: " +villano.getVida() +", Mazo: " +villano.getMazo());
 
+        while (heroe.getVida() >= 0 && villano.getVida() >= 0) {
 
-
-
-
+        }
     }
-
-
 }

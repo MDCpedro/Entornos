@@ -10,7 +10,7 @@ from typing import Any
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, posicion):
         super().__init__()
-        imagenes_cargadas = pygame.image.load("RescateEspacial\\imagenes\\nave.png")
+        imagenes_cargadas = pygame.image.load("Python\\RescateEspacial\\imagenes\\nave.png")
         self.image = imagenes_cargadas
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion
@@ -38,7 +38,7 @@ class Plataforma(pygame.sprite.Sprite):
 class Fondo(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        imagen = pygame.image.load("RescateEspacial\\imagenes\\cielo.jpg")
+        imagen = pygame.image.load("Python\\RescateEspacial\\imagenes\\cielo.jpg")
         pantalla = pygame.display.get_surface()
         self.image = pygame.transform.scale(imagen, (pantalla.get_width(), pantalla.get_height()))
         self.rect = self.image.get_rect()
@@ -49,9 +49,10 @@ class Fondo(pygame.sprite.Sprite):
 class Meteorito(pygame.sprite.Sprite):
     def __init__(self, posicion_spawn):
         super().__init__()
-        imagenes_cargadas = pygame.image.load("RescateEspacial\\imagenes\\nave.png")
+        imagen = pygame.image.load("Python\\RescateEspacial\\imagenes\\meteoro.png")
         posicion_spawn = posicion_spawn
-        self.image = imagenes_cargadas
+        self.image = imagen
+        self.image = pygame.transform.rotate(imagen, (-42))
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion_spawn
     
