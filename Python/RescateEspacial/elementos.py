@@ -5,6 +5,7 @@ from typing import Any
 
 
 
+
 # Creamos la plataforma, o nave.
 
 class Plataforma(pygame.sprite.Sprite):
@@ -58,3 +59,21 @@ class Meteorito(pygame.sprite.Sprite):
     
     def update(self, *args: Any, **kwargs: Any):
         self.rect.y += 4
+
+# Creamos Astronautas
+
+class Atronauta(pygame.sprite.Sprite):
+    def __init__(self, posicion_spawn):
+        super().__init__()
+        imagen = pygame.image.load("Python\\RescateEspacial\\imagenes\\astronauta.png")
+        posicion_spawn = posicion_spawn
+        self.imagen_escalada = pygame.transform.scale(imagen, (80, 80))
+        self.image = self.imagen_escalada
+        self.rect = self.image.get_rect()
+        self.rect.topleft = posicion_spawn
+        self.rotacion = 0
+    def update(self, *args: Any, **kwargs: Any):
+        self.rotacion += 2
+        self.image = pygame.transform.rotate(self.imagen_escalada, (self.rotacion))
+        self.rect.y += 2
+        self.rect = self.image.get_rect(center=self.rect.center)

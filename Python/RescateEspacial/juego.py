@@ -13,8 +13,8 @@ pantalla.fill((4,6,6))
 running = True
 FPS = 60
 reloj = pygame.time.Clock()
-ultimo_enemigo_creado = 0
-
+ultimo_meteorito_creado = 0
+ultimo_astronauta_creado = 0
 # Creamos un numero aleatorio para la generacion de meteoritos y astronautas
 
 numero_aleatorio = random.randint(1, pantalla.get_width())
@@ -29,13 +29,13 @@ posicion_spawn = (numero_aleatorio, 0)
 
 grupo_sprites_todos = pygame.sprite.Group() 
 grupo_sprites_meteoritos = pygame.sprite.Group()
-
+grupo_sprites_astronautas = pygame.sprite.Group()
 # Añadimos los sprites
 
 grupo_sprites_todos.add(elementos.Fondo())
 grupo_sprites_todos.add(elementos.Plataforma((200,300)))
 meteorito = elementos.Meteorito(posicion_spawn) 
-
+astronauta = elementos.Atronauta(posicion_spawn)
 
 
 # Bucle principal del juego
@@ -52,6 +52,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
      
+    momento_actual = pygame.time.get_ticks()
     #   Capturamos teclas
     teclas = pygame.key.get_pressed()
     grupo_sprites_todos.update(teclas)
@@ -62,17 +63,27 @@ while running:
     grupo_sprites_todos.draw(pantalla)
     pygame.display.flip()
 
+    # Hacemos que caigan asteroides
     
-    momento_actual = pygame.time.get_ticks()
-    if (momento_actual > ultimo_enemigo_creado + 600):
+    momento_actual_meteoritos = momento_actual
+    if (momento_actual_meteoritos > ultimo_meteorito_creado + 600):
         numero_aleatorio = random.randint(1, pantalla.get_width())
         posicion_spawn = (numero_aleatorio, 0)
         meteorito = elementos.Meteorito(posicion_spawn) 
         grupo_sprites_meteoritos.add(meteorito)
         grupo_sprites_todos.add(meteorito)
-        ultimo_enemigo_creado = momento_actual
+        ultimo_meteorito_creado = momento_actual_meteoritos
 
-
+    # Hacemos que caigan astronautas
+    momento_actual_astronautas = momento_actual
+    if (momento_actual_astronautas > ultimo_astronauta_creado + 1500):
+        numero_aleatorio = random.randint(1, pantalla.get_width())
+        posicion_spawn = (numero_aleatorio, 0)
+        astronauta = elementos.Atronauta(posicion_spawn) 
+        grupo_sprites_astronautas.add(astronauta)
+        grupo_sprites_todos.add(astronauta)
+        ultimo_astronauta_creado = momento_actual_astronautas
+        
 
          
 pygame.quit()
