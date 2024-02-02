@@ -12,10 +12,10 @@ class Plataforma(pygame.sprite.Sprite):
     def __init__(self, posicion):
         super().__init__()
         imagenes_cargadas = pygame.image.load("Python\\RescateEspacial\\imagenes\\nave.png")
-        self.image = imagenes_cargadas
+        self.image = pygame.transform.scale(imagenes_cargadas, (200, 200))
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion
-        self.image = pygame.transform.scale(imagenes_cargadas, (200, 200))
+        self.mask = pygame.mask.from_surface(self.image)
     
     def update(self, *args: Any, **kwargs: Any):
         teclas = args[0]

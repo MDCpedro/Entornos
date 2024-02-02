@@ -28,12 +28,15 @@ posicion_spawn = (numero_aleatorio, 0)
 # Creamos grupos
 
 grupo_sprites_todos = pygame.sprite.Group() 
+grupo_sprites_nave = pygame.sprite.Group()
 grupo_sprites_meteoritos = pygame.sprite.Group()
 grupo_sprites_astronautas = pygame.sprite.Group()
 # Añadimos los sprites
 
 grupo_sprites_todos.add(elementos.Fondo())
-grupo_sprites_todos.add(elementos.Plataforma((200,300)))
+plataforma = elementos.Plataforma((posicion))
+grupo_sprites_todos.add(plataforma)
+grupo_sprites_nave.add(plataforma)
 meteorito = elementos.Meteorito(posicion_spawn) 
 astronauta = elementos.Atronauta(posicion_spawn)
 
@@ -68,7 +71,7 @@ while running:
     momento_actual_meteoritos = momento_actual
     if (momento_actual_meteoritos > ultimo_meteorito_creado + 600):
         numero_aleatorio = random.randint(1, pantalla.get_width())
-        posicion_spawn = (numero_aleatorio, 0)
+        posicion_spawn = (numero_aleatorio, -100)
         meteorito = elementos.Meteorito(posicion_spawn) 
         grupo_sprites_meteoritos.add(meteorito)
         grupo_sprites_todos.add(meteorito)
@@ -78,13 +81,20 @@ while running:
     momento_actual_astronautas = momento_actual
     if (momento_actual_astronautas > ultimo_astronauta_creado + 1500):
         numero_aleatorio = random.randint(1, pantalla.get_width())
-        posicion_spawn = (numero_aleatorio, 0)
-        astronauta = elementos.Atronauta(posicion_spawn) 
+        posicion_spawn = (numero_aleatorio, -100)
+        astronauta = elementos.Atronauta(posicion_spawn)  
         grupo_sprites_astronautas.add(astronauta)
         grupo_sprites_todos.add(astronauta)
         ultimo_astronauta_creado = momento_actual_astronautas
         
-
+   # Detectamos que los astronautas choquen con la nave, si choca matamos el sprite
+    
+    colision_astronautas = pygame.sprite.spritecollide(plataforma.mask, grupo_sprites_astronautas, True)
+    if (colision_astronautas): {
+        astronauta.kill()
+    }
+    
+  
          
 pygame.quit()
 

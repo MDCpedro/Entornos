@@ -16,19 +16,11 @@ public class Main {
         mazo.add(carta1);
         mazo.add(carta2);
 
-        Personaje heroe = new Personaje("Yuuji", 10, mazo);
+        Personaje heroe = new Personaje("Itadori", 10, mazo);
         Personaje villano = new Personaje("Sukuna", 10, mazo);
 
-        pelea(heroe, villano, mazo);
-
-
-
-    }
-
-    public static void pelea(Personaje heroe, Personaje villano, List<Carta> Mazo) {
         Random random = new Random();
         boolean HeroeEmpieza = random.nextBoolean();
-        int Seleccion = random.nextInt(0, 2);
 
 
         System.out.println("Pelea entre " + heroe.getNombre() + " y " + villano.getNombre() +"!!!");
@@ -36,7 +28,38 @@ public class Main {
         System.out.println(villano.getNombre()+ ", Vida: " +villano.getVida() +", Mazo: " +villano.getMazo());
 
         while (heroe.getVida() >= 0 && villano.getVida() >= 0) {
+            int carta_aleatoria = random.nextInt(0, mazo.size());
+            int Seleccion_carta = random.nextInt(0, mazo.size());
+
+            //HEROE
+            System.out.println("----------"+heroe.getNombre()+"----------");
+            System.out.println("Cartas disponibles: ");
+
+            //GENERA LAS CARTAS
+            Carta carta_disponible1 = mazo.get(carta_aleatoria);
+            String carta_disponible1_nombre = carta_disponible1.getNombre();
+            System.out.println("1: "+carta_disponible1_nombre);
+
+            carta_aleatoria = random.nextInt(0, mazo.size());
+
+            Carta carta_disponible2 = mazo.get(carta_aleatoria);
+            String carta_disponible2_nombre = carta_disponible2.getNombre();
+            System.out.println("2: "+carta_disponible2_nombre);
+
+            switch (Seleccion_carta) {
+                case 0:
+                    System.out.println(heroe.getNombre()+ " ha utilizado " +carta_disponible1_nombre);
+                    break;
+                case 1:
+                    System.out.println(heroe.getNombre()+ " ha utilizado " +carta_disponible2_nombre);
+            }
+
 
         }
+
+
+
     }
+
+
 }

@@ -24,4 +24,8 @@ public class Personaje {
     public List<Carta> getMazo() {
         return mazo;
     }
+
+    public void RecibirDaño() {
+        this.vida = vida-3;
+    }
 }
