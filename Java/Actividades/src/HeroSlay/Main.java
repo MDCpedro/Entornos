@@ -29,7 +29,7 @@ public class Main {
 
         while (heroe.getVida() >= 0 && villano.getVida() >= 0) {
             int carta_aleatoria = random.nextInt(0, mazo.size());
-            int Seleccion_carta = random.nextInt(0, mazo.size());
+            int seleccion_carta = random.nextInt(0, mazo.size());
 
             //HEROE
             System.out.println("----------"+heroe.getNombre()+"----------");
@@ -46,14 +46,9 @@ public class Main {
             String carta_disponible2_nombre = carta_disponible2.getNombre();
             System.out.println("2: "+carta_disponible2_nombre);
 
-            switch (Seleccion_carta) {
-                case 0:
-                    System.out.println(heroe.getNombre()+ " ha utilizado " +carta_disponible1_nombre);
-                    break;
-                case 1:
-                    System.out.println(heroe.getNombre()+ " ha utilizado " +carta_disponible2_nombre);
+            if (carta_disponible1.getTipo().equals(CartaTipo.ATAQUE)) {
+                villano.RecibirDaño();
             }
-
 
         }
 
