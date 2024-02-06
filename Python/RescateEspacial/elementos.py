@@ -80,3 +80,10 @@ class Atronauta(pygame.sprite.Sprite):
         self.image = pygame.transform.rotate(self.imagen_escalada, (self.rotacion))
         self.rect.y += 2
         self.rect = self.image.get_rect(center=self.rect.center)
+
+class Vacio(pygame.sprite.Sprite):
+    def __init__(self, posicion_vacio):
+        super().__init__()
+        self.rect = pygame.Rect(posicion_vacio, 900)
+        
+        

@@ -24,9 +24,10 @@ numero_aleatorio = random.randint(1, pantalla.get_width())
 
 posicion = (200, 300)
 posicion_spawn = (numero_aleatorio, 0)
+posicion_vacio = (0, 700)
 
 # Creamos grupos
-
+grupo_sprites_vacio = pygame.sprite.Group() 
 grupo_sprites_todos = pygame.sprite.Group() 
 grupo_sprites_nave = pygame.sprite.Group()
 grupo_sprites_meteoritos = pygame.sprite.Group()
