@@ -60,12 +60,6 @@ while running:
     teclas = pygame.key.get_pressed()
     grupo_sprites_todos.update(teclas)
 
-    # Pintamos pantalla y grupos de sprites y pasamos frame
-
-    pantalla.fill((24,5,5))
-    grupo_sprites_todos.draw(pantalla)
-    pygame.display.flip()
-
     # Hacemos que caigan asteroides
     
     momento_actual_meteoritos = momento_actual
@@ -89,10 +83,23 @@ while running:
         
    # Detectamos que los astronautas choquen con la nave, si choca matamos el sprite
     
-    colision_astronautas = pygame.sprite.spritecollide(plataforma.mask, grupo_sprites_astronautas, True)
-    if (colision_astronautas): {
-        astronauta.kill()
-    }
+    colision_astronautas = pygame.sprite.spritecollideany(plataforma, grupo_sprites_astronautas, pygame.sprite.collide_mask)
+
+    if (colision_astronautas):
+        colision_astronautas.kill()
+        
+    # Detectamos meteoritos que choquen con la nave, si choca se acaba el jeugo.
+    
+    colision_meteorito = pygame.sprite.spritecollideany(plataforma, grupo_sprites_meteoritos, pygame.sprite.collide_mask)
+    
+    if (colision_meteorito):
+        running = False
+    # Pintamos pantalla y grupos de sprites y pasamos frame
+
+    pantalla.fill((24,5,5))
+    grupo_sprites_todos.draw(pantalla)
+    pygame.display.flip()
+
     
   
          

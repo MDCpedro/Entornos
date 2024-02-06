@@ -33,7 +33,9 @@ class Plataforma(pygame.sprite.Sprite):
         if teclas[pygame.K_DOWN]:
             self.rect.y += 7
             self.rect.y = min(pantalla.get_height()-self.image.get_height(), self.rect.y)
+        self.mask = pygame.mask.from_surface(self.image)
 
+     
 # Creamos el fondo
         
 class Fondo(pygame.sprite.Sprite):
@@ -56,7 +58,7 @@ class Meteorito(pygame.sprite.Sprite):
         self.image = pygame.transform.rotate(imagen, (-42))
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion_spawn
-    
+        self.mask = pygame.mask.from_surface(self.image)
     def update(self, *args: Any, **kwargs: Any):
         self.rect.y += 4
 
@@ -72,6 +74,7 @@ class Atronauta(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion_spawn
         self.rotacion = 0
+        self.mask = pygame.mask.from_surface(self.image)
     def update(self, *args: Any, **kwargs: Any):
         self.rotacion += 2
         self.image = pygame.transform.rotate(self.imagen_escalada, (self.rotacion))
