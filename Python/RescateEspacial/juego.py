@@ -24,7 +24,7 @@ numero_aleatorio = random.randint(1, pantalla.get_width())
 
 posicion = (200, 300)
 posicion_spawn = (numero_aleatorio, 0)
-posicion_vacio = (0, 700)
+posicion_vacio = (0, 900)
 
 # Creamos grupos
 grupo_sprites_vacio = pygame.sprite.Group() 
@@ -40,6 +40,8 @@ grupo_sprites_todos.add(plataforma)
 grupo_sprites_nave.add(plataforma)
 meteorito = elementos.Meteorito(posicion_spawn) 
 astronauta = elementos.Atronauta(posicion_spawn)
+vacio = elementos.Vacio(posicion_vacio)
+
 
 
 # Bucle principal del juego
@@ -89,12 +91,28 @@ while running:
     if (colision_astronautas):
         colision_astronautas.kill()
         
-    # Detectamos meteoritos que choquen con la nave, si choca se acaba el jeugo.
+    # Detectamos meteoritos que choquen con la nave, si choca se acaba el juego.
     
     colision_meteorito = pygame.sprite.spritecollideany(plataforma, grupo_sprites_meteoritos, pygame.sprite.collide_mask)
     
     if (colision_meteorito):
         running = False
+    
+    # Detectamos que los astronautas que caen choquen con el final de la pantalla.
+       
+        
+    colision_vacio_astronautas = pygame.sprite.spritecollideany(vacio, grupo_sprites_astronautas, pygame.sprite.collide_rect)
+
+    if (colision_vacio_astronautas):
+       running = False
+    
+    # Detectamos que los meteoritos caen al vacio y los borramos para ahorrar memoria.
+    
+    colision_vacio_meteoritos = pygame.sprite.spritecollideany(vacio, grupo_sprites_meteoritos, pygame.sprite.collide_rect)
+
+    if (colision_vacio_meteoritos):
+        colision_vacio_meteoritos.kill()
+        
     # Pintamos pantalla y grupos de sprites y pasamos frame
 
     pantalla.fill((24,5,5))

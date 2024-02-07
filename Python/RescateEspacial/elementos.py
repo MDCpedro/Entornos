@@ -84,6 +84,6 @@ class Atronauta(pygame.sprite.Sprite):
 class Vacio(pygame.sprite.Sprite):
     def __init__(self, posicion_vacio):
         super().__init__()
-        self.rect = pygame.Rect(posicion_vacio, 900)
+        self.rect = pygame.Rect(posicion_vacio, (900, 50))
         
         
