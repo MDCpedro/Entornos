@@ -1,6 +1,7 @@
 import pygame
 import elementos
 import random
+import sys
 # Iniciamos juego y pantalla
 
 pygame.init()
@@ -27,7 +28,7 @@ posicion_spawn = (numero_aleatorio, 0)
 posicion_vacio = (0, 900)
 
 # Creamos grupos
-grupo_sprites_vacio = pygame.sprite.Group() 
+
 grupo_sprites_todos = pygame.sprite.Group() 
 grupo_sprites_nave = pygame.sprite.Group()
 grupo_sprites_meteoritos = pygame.sprite.Group()
@@ -42,6 +43,9 @@ meteorito = elementos.Meteorito(posicion_spawn)
 astronauta = elementos.Atronauta(posicion_spawn)
 vacio = elementos.Vacio(posicion_vacio)
 
+# Creamos los contadores de vida y puntos
+puntos = 0
+vidas = 3
 
 
 # Bucle principal del juego
@@ -90,21 +94,26 @@ while running:
 
     if (colision_astronautas):
         colision_astronautas.kill()
-        
+        puntos += 1
+    
     # Detectamos meteoritos que choquen con la nave, si choca se acaba el juego.
     
     colision_meteorito = pygame.sprite.spritecollideany(plataforma, grupo_sprites_meteoritos, pygame.sprite.collide_mask)
     
     if (colision_meteorito):
+        colision_meteorito.kill()
+        vidas -= 1
+
+    # Si las vidas llegan a 0 perdemos.
+    if (vidas == 0):
         running = False
-    
     # Detectamos que los astronautas que caen choquen con el final de la pantalla.
        
-        
     colision_vacio_astronautas = pygame.sprite.spritecollideany(vacio, grupo_sprites_astronautas, pygame.sprite.collide_rect)
 
     if (colision_vacio_astronautas):
-       running = False
+       colision_vacio_astronautas.kill()
+       puntos -= 5
     
     # Detectamos que los meteoritos caen al vacio y los borramos para ahorrar memoria.
     
@@ -112,11 +121,20 @@ while running:
 
     if (colision_vacio_meteoritos):
         colision_vacio_meteoritos.kill()
-        
+    
+    
+    # añadimos textos
+    
+    texto_puntos = str(puntos) 
+    contador_puntos = elementos.Texto("Puntos: " + texto_puntos, puntos, 450, 100, color=(255, 255, 255), tamaño=20)
+    texto_vidas = str(vidas)
+    contador_vidas = elementos.Texto("Vidas restantes: " + texto_vidas, vidas, 450, 120, color=(255, 0, 0), tamaño=20)
     # Pintamos pantalla y grupos de sprites y pasamos frame
 
     pantalla.fill((24,5,5))
     grupo_sprites_todos.draw(pantalla)
+    pantalla.blit(contador_puntos.surface, contador_puntos.rect)
+    pantalla.blit(contador_vidas.surface, contador_vidas.rect)
     pygame.display.flip()
 
     

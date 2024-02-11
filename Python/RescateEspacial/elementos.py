@@ -1,5 +1,5 @@
 import pygame
-
+import sys
 from typing import Any
 
 
@@ -12,7 +12,7 @@ class Plataforma(pygame.sprite.Sprite):
     def __init__(self, posicion):
         super().__init__()
         imagenes_cargadas = pygame.image.load("Python\\RescateEspacial\\imagenes\\nave.png")
-        self.image = pygame.transform.scale(imagenes_cargadas, (200, 200))
+        self.image = pygame.transform.scale(imagenes_cargadas, (150, 150))
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion
         self.mask = pygame.mask.from_surface(self.image)
@@ -86,4 +86,13 @@ class Vacio(pygame.sprite.Sprite):
         super().__init__()
         self.rect = pygame.Rect(posicion_vacio, (900, 50))
         
-        
+class Texto:
+    def __init__(self, contenido, contador, x, y, color=(255, 255, 255), tamaño=10):
+        self.contenido = contenido
+        self.contador = contador
+        self.color = color
+        self.tamaño = tamaño
+        self.font = pygame.font.Font(None, tamaño) 
+        self.surface = self.font.render(contenido, True, color)
+        self.rect = self.surface.get_rect()
+        self.rect.center = (x, y)
