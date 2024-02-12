@@ -12,7 +12,7 @@ class Plataforma(pygame.sprite.Sprite):
     def __init__(self, posicion):
         super().__init__()
         imagenes_cargadas = pygame.image.load("Python\\RescateEspacial\\imagenes\\nave.png")
-        self.image = pygame.transform.scale(imagenes_cargadas, (200, 200))
+        self.image = pygame.transform.scale(imagenes_cargadas, (150, 150))
         self.rect = self.image.get_rect()
         self.rect.topleft = posicion
         self.mask = pygame.mask.from_surface(self.image)
