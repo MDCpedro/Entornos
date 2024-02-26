@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "gradle",
+			"id": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJavaapp:runapp",
+			"script": "app:run",
+			"description": "Runs this project as a JVM application",
+			"group": "application",
+			"project": "app",
+			"buildFile": "C:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava\\app\\build.gradle",
+			"rootProject": "ActGradle",
+			"projectFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"workspaceFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"args": "",
+			"javaDebug": false,
+			"problemMatcher": [
+				"$gradle"
+			],
+			"label": "gradle: app:run"
+		},
+		{
+			"type": "gradle",
+			"id": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJavaapp:buildapp",
+			"script": "app:build",
+			"description": "Assembles and tests this project.",
+			"group": "build",
+			"project": "app",
+			"buildFile": "C:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava\\app\\build.gradle",
+			"rootProject": "ActGradle",
+			"projectFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"workspaceFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"args": "",
+			"javaDebug": false,
+			"problemMatcher": [
+				"$gradle"
+			],
+			"label": "gradle: app:build"
+		}
+	]
+}
