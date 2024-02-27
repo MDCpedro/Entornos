@@ -6,6 +6,7 @@
  * User Manual available at https://docs.gradle.org/8.0.2/userguide/building_java_projects.html
  */
 
+
 plugins {
     id 'application'
     id 'com.adarshr.test-logger' version '4.0.0'
@@ -32,5 +33,13 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+            "Main-Class": 'entornosjava.App'
+        )
+    }
 }
 

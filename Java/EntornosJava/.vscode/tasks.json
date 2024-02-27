@@ -36,6 +36,42 @@
 				"$gradle"
 			],
 			"label": "gradle: app:build"
+		},
+		{
+			"type": "gradle",
+			"id": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJavaapp:jarapp",
+			"script": "app:jar",
+			"description": "Assembles a jar archive containing the main classes.",
+			"group": "build",
+			"project": "app",
+			"buildFile": "C:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava\\app\\build.gradle",
+			"rootProject": "ActGradle",
+			"projectFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"workspaceFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"args": "",
+			"javaDebug": false,
+			"problemMatcher": [
+				"$gradle"
+			],
+			"label": "gradle: app:jar"
+		},
+		{
+			"type": "gradle",
+			"id": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJavaapp:cleanapp",
+			"script": "app:clean",
+			"description": "Deletes the build directory.",
+			"group": "build",
+			"project": "app",
+			"buildFile": "C:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava\\app\\build.gradle",
+			"rootProject": "ActGradle",
+			"projectFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"workspaceFolder": "c:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\EntornosJava",
+			"args": "",
+			"javaDebug": false,
+			"problemMatcher": [
+				"$gradle"
+			],
+			"label": "gradle: app:clean"
 		}
 	]
 }
