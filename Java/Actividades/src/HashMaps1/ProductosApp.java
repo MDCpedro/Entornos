@@ -15,19 +15,25 @@ public class ProductosApp {
         String path_absoluto = "C:\\Users\\alumne-DAM\\Documents\\EntornosyProgramacion\\EntornosyProgramacion\\Java\\Actividades\\src\\HashMaps1\\productos.txt";
         BufferedReader br = new BufferedReader(new FileReader(path_absoluto));
 
-        String texto = br.readLine();
-        while (texto != null) {
-            String[] linia = texto.split(", ");
+        String linia = br.readLine();
+        int contador = 0;
+        while (linia != null) {
+            String[] partesLinia = linia.split(", ");
 
-            System.out.println(linia[0]);
-            System.out.println(linia[1]);
-            System.out.println(linia[2]);
-            texto = br.readLine();
+            Producto producto = new Producto();
+
+            producto.setCodigo(Integer.valueOf(partesLinia[0]));
+            producto.setNombre(partesLinia[1]);
+            producto.setPrecio(Double.valueOf(partesLinia[2]));
+
+            inventario.put(Integer.valueOf(partesLinia[0]), producto);
+            linia = br.readLine();
         }
+        br.close();
         boolean salir = false;
         int opcion;
         int buscar_codigo;
-        while (salir == false) {
+        while (!salir) {
             System.out.println("Que te gustaria hacer?");
             System.out.println("0- Salir del programa.");
             System.out.println("1- Buscar un producto.");
@@ -37,13 +43,10 @@ public class ProductosApp {
             switch (opcion) {
                 case 1:
                     System.out.println("Escribe el codigo del producto a buscar.");
-                    buscar_codigo = scanner.nextInt()
+                    buscar_codigo = scanner.nextInt();
+                case 0:
+                    salir = true;
             }
-
-
         }
-
-
-
     }
 }
