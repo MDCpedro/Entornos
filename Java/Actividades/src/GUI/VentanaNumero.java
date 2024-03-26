@@ -1,5 +1,4 @@
 package GUI;
-
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -31,23 +30,28 @@ public class VentanaNumero extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         JButton boton1 = new JButton("Adivinar");
         JLabel texto1 = new JLabel("Adivina el numero entre 1 y 100");
-        JTextField campo1 = new JTextField(8);
+        campo1 = new JTextField(8);
 
-        int num_escrito = Integer.valueOf(texto1.getText());
+        
         boton1.addActionListener(new ActionListener() {
-            public void EnviarNum(ActionEvent e) {
+
+            public void actionPerformed(ActionEvent e) {
                 try {
+
+                    int num_escrito = Integer.valueOf(campo1.getText());
                     if (num_escrito == numero) {
-                        JOptionPane.showMessageDialog(null, "Hola");
+                        JOptionPane.showMessageDialog(null, "Numero correcto!!!");
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "El numero es incorrecto");
+                        campo1.setText("");
                     }
                 }catch(NumberFormatException ex){
-
+                    JOptionPane.showMessageDialog(null, "El numero es incorrecto");
                 }
                 
             }
+
         });
 
         panel.add(texto1);
@@ -55,8 +59,6 @@ public class VentanaNumero extends JFrame {
         panel.add(boton1);
 
         this.add(panel); 
-        this.setVisible(true);
-
         this.setVisible(true);
     }
 }
